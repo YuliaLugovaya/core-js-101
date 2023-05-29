@@ -307,10 +307,11 @@ function get3TopItems(arr) {
  */
 function getPositivesCount(arr) {
   return arr.reduce((acc, el) => {
+    let result = acc;
     if (typeof el === 'number' && el > 0) {
-      acc += 1;
+      result += 1;
     }
-    return acc;
+    return result;
   }, 0);
 }
 
@@ -327,51 +328,52 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(arr) {
-  const obj = {
-    'one': 1,
-    'two': 2,
-    'three': 3,
-    'four': 4,
-    'five': 5,
-    'six': 6,
-    'seven': 7,
-    'eight': 8,
-    'nine': 9,
-    'zero': 0,
-  };
+function sortDigitNamesByNumericOrder(/* arr */) {
+  throw new Error('Not implemented');
+  // const obj = {
+  //   'one': 1,
+  //   'two': 2,
+  //   'three': 3,
+  //   'four': 4,
+  //   'five': 5,
+  //   'six': 6,
+  //   'seven': 7,
+  //   'eight': 8,
+  //   'nine': 9,
+  //   'zero': 0,
+  // };
 
-  const objNumbers = {
-    '1': 'one',
-    '2': 'two',
-    '3': 'three',
-    '4': 'four',
-    '5': 'five',
-    '6': 'six',
-    '7': 'seven',
-    '8': 'eight',
-    '9': 'nine',
-    '0': 'zero',
-  };
+  // const objNumbers = {
+  //   '1': 'one',
+  //   '2': 'two',
+  //   '3': 'three',
+  //   '4': 'four',
+  //   '5': 'five',
+  //   '6': 'six',
+  //   '7': 'seven',
+  //   '8': 'eight',
+  //   '9': 'nine',
+  //   '0': 'zero',
+  // };
 
-  const newArr = arr.map((el) => {
-    if (Object.prototype.hasOwnProperty.call(obj, el)) {
-      el = obj[el];
-    }
-    return el;
-  });
+  // const newArr = arr.map((el) => {
+  //   if (Object.prototype.hasOwnProperty.call(obj, el)) {
+  //     el = obj[el];
+  //   }
+  //   return el;
+  // });
 
-  const numbersArr = newArr.sort((a, b) => a - b);
+  // const numbersArr = newArr.sort((a, b) => a - b);
 
-  const arrReturnToString = numbersArr.map((el) => {
-    const elString = el.toString();
-    if (Object.prototype.hasOwnProperty.call(objNumbers, elString)) {
-      el = objNumbers[el];
-    }
-    return el;
-  });
+  // const arrReturnToString = numbersArr.map((el) => {
+  //   const elString = el.toString();
+  //   if (Object.prototype.hasOwnProperty.call(objNumbers, elString)) {
+  //     el = objNumbers[el];
+  //   }
+  //   return el;
+  // });
 
-  return arrReturnToString;
+  // return arrReturnToString;
 }
 
 /**
@@ -404,10 +406,11 @@ function getItemsSum(arr) {
  */
 function getFalsyValuesCount(arr) {
   return arr.reduce((acc, el) => {
+    let result = acc;
     if (Boolean(el) === false) {
-      acc += 1;
+      result += 1;
     }
-    return acc;
+    return result;
   }, 0);
 }
 
@@ -427,10 +430,11 @@ function getFalsyValuesCount(arr) {
  */
 function findAllOccurrences(arr, item) {
   return arr.reduce((acc, el) => {
+    let result = acc;
     if (el === item) {
-      acc += 1;
+      result += 1;
     }
-    return acc;
+    return result;
   }, 0);
 }
 

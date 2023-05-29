@@ -17,7 +17,5 @@ module.exports = {
   },
   rules: {
     'linebreak-style': 0,
-    "no-param-reassign": 0,
-    'quote-props': ["error", "always"],
   },
 };
