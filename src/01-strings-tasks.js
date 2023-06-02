@@ -176,8 +176,8 @@ function convertToUpperCase(str) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -224,8 +224,37 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const arrayFirst = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
+  const arraySecond = ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  const arrayFirstL = arrayFirst.map((el) => el.toLowerCase());
+  const arraySecondL = arraySecond.map((el) => el.toLowerCase());
+
+  const arrNew = str.split('');
+
+  const arr = arrNew.reduce((acc, el) => {
+    if (arrayFirst.includes(el)) {
+      const index = arrayFirst.indexOf(el);
+      acc.push(arraySecond[index]);
+    }
+    if (arraySecond.includes(el)) {
+      const index = arraySecond.indexOf(el);
+      acc.push(arrayFirst[index]);
+    }
+    if (arrayFirstL.includes(el)) {
+      const index = arrayFirstL.indexOf(el);
+      acc.push(arraySecondL[index]);
+    }
+    if (arraySecondL.includes(el)) {
+      const index = arraySecondL.indexOf(el);
+      acc.push(arrayFirstL[index]);
+    }
+    if (el === ' ' || el === '!' || el === '?') {
+      acc.push(el);
+    }
+    return acc;
+  }, []);
+  return arr.join('');
 }
 
 /**
@@ -270,8 +299,16 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const arr = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣', 'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦', 'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥', 'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+
+  return arr.reduce((acc, el, i) => {
+    let result = acc;
+    if (value === el) {
+      result = i;
+    }
+    return result;
+  }, 0);
 }
 
 
