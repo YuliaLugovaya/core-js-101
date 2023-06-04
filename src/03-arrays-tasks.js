@@ -328,52 +328,53 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
-  // const obj = {
-  //   'one': 1,
-  //   'two': 2,
-  //   'three': 3,
-  //   'four': 4,
-  //   'five': 5,
-  //   'six': 6,
-  //   'seven': 7,
-  //   'eight': 8,
-  //   'nine': 9,
-  //   'zero': 0,
-  // };
+function sortDigitNamesByNumericOrder(arr) {
+  const obj = {
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7,
+    eight: 8,
+    nine: 9,
+    zero: 0,
+  };
 
-  // const objNumbers = {
-  //   '1': 'one',
-  //   '2': 'two',
-  //   '3': 'three',
-  //   '4': 'four',
-  //   '5': 'five',
-  //   '6': 'six',
-  //   '7': 'seven',
-  //   '8': 'eight',
-  //   '9': 'nine',
-  //   '0': 'zero',
-  // };
+  const objNumbers = {
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+    0: 'zero',
+  };
 
-  // const newArr = arr.map((el) => {
-  //   if (Object.prototype.hasOwnProperty.call(obj, el)) {
-  //     el = obj[el];
-  //   }
-  //   return el;
-  // });
+  const newArr = arr.map((el) => {
+    let result = el;
+    if (Object.prototype.hasOwnProperty.call(obj, el)) {
+      result = obj[el];
+    }
+    return result;
+  });
 
-  // const numbersArr = newArr.sort((a, b) => a - b);
+  const numbersArr = newArr.sort((a, b) => a - b);
 
-  // const arrReturnToString = numbersArr.map((el) => {
-  //   const elString = el.toString();
-  //   if (Object.prototype.hasOwnProperty.call(objNumbers, elString)) {
-  //     el = objNumbers[el];
-  //   }
-  //   return el;
-  // });
+  const arrReturnToString = numbersArr.map((el) => {
+    const elString = el.toString();
+    let result = el;
+    if (Object.prototype.hasOwnProperty.call(objNumbers, elString)) {
+      result = objNumbers[el];
+    }
+    return result;
+  });
 
-  // return arrReturnToString;
+  return arrReturnToString;
 }
 
 /**
@@ -480,8 +481,25 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  const sort = arr.sort((a, b) => {
+    if (a.country > b.country) {
+      return 1;
+    }
+    return -1;
+  });
+
+  sort.sort((a, b) => {
+    if (a.country === b.country) {
+      if (a.city > b.city) {
+        return 1;
+      }
+      return -1;
+    }
+    return 0;
+  });
+
+  return sort;
 }
 
 /**
@@ -519,8 +537,15 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  const length = end - start + 1;
+  const arr = Array(length).fill(start);
+
+  return arr.map((el, i) => {
+    let result = el;
+    result += i;
+    return result;
+  });
 }
 
 /**
